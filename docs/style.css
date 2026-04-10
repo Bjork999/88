@@ -229,10 +229,20 @@ body {
   line-height: 1.2;
 }
 
-.card-emoji {
-  font-size: 1.4rem;
-  line-height: 1;
-  margin: 2px 0;
+.card-svg {
+  width: 100%;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.card-svg svg {
+  width: 100%;
+  height: 100%;
+  display: block;
 }
 
 .card-name {
@@ -503,8 +513,8 @@ body {
     min-width: 680px;
   }
 
-  .card-emoji {
-    font-size: 1.2rem;
+  .card-svg {
+    min-height: 30px;
   }
 
   .card-name {
@@ -541,8 +551,8 @@ body {
     min-height: 64px;
   }
 
-  .card-emoji {
-    font-size: 1.1rem;
+  .card-svg {
+    min-height: 26px;
   }
 
   .card-name {
