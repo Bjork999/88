@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>花札 八八 計算機</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <!-- ヘッダー -->
+    <header class="header">
+      <h1>花札 八八 計算機</h1>
+      <p class="subtitle">札を選択して役を判定</p>
+    </header>
+
+    <!-- モード切替 -->
+    <div class="mode-selector">
+      <button id="btn-teyaku" class="mode-btn active">手役版</button>
+      <button id="btn-bafuda" class="mode-btn">場札版</button>
+    </div>
+
+    <!-- 場札版: 選択対象切替 -->
+    <div id="target-selector" class="target-selector" style="display: none;">
+      <button id="btn-field-select" class="target-btn active">場札を選択</button>
+      <button id="btn-captured-select" class="target-btn">取り札を選択</button>
+    </div>
+
+    <!-- 選択情報バー -->
+    <div class="selection-bar">
+      <span id="selection-info">手札: 0 / 7枚</span>
+      <button id="btn-reset" class="reset-btn">リセット</button>
+    </div>
+
+    <!-- カードグリッド -->
+    <div id="card-grid" class="card-grid"></div>
+
+    <!-- 凡例 -->
+    <div class="legend">
+      <span class="legend-item"><span class="legend-dot bright"></span>光 (20点)</span>
+      <span class="legend-item"><span class="legend-dot animal"></span>種 (10点)</span>
+      <span class="legend-item"><span class="legend-dot ribbon"></span>短冊 (5点)</span>
+      <span class="legend-item"><span class="legend-dot chaff"></span>カス (1点)</span>
+    </div>
+
+    <!-- 判定結果パネル -->
+    <div id="results-panel" class="results-panel">
+      <p class="hint">手札を7枚選択してください</p>
+    </div>
+
+    <!-- 役一覧 -->
+    <details class="yaku-reference">
+      <summary>役一覧（参考）</summary>
+      <div class="yaku-ref-content">
+        <h4>手役 - Group A（月の組み合わせ）</h4>
+        <table>
+          <tr><td>手四</td><td>6貫</td><td>同月4枚が手札にある</td></tr>
+          <tr><td>喰付</td><td>4貫</td><td>3組の同月ペア + 1枚</td></tr>
+        </table>
+        <h4>手役 - Group B（札種の組み合わせ）</h4>
+        <table>
+          <tr><td>赤</td><td>7貫</td><td>短冊+カスのみ（短冊1枚以上）</td></tr>
+          <tr><td>総カス</td><td>6貫</td><td>7枚全てカス</td></tr>
+          <tr><td>光一</td><td>6貫</td><td>光1枚 + カス6枚</td></tr>
+          <tr><td>タネ一</td><td>5貫</td><td>種1枚 + カス6枚</td></tr>
+          <tr><td>短一</td><td>4貫</td><td>短冊1枚 + カス6枚</td></tr>
+        </table>
+        <h4>場の役</h4>
+        <table>
+          <tr><td>絶場</td><td>×4</td><td>柳に小野道風 or 桐に鳳凰が場にある</td></tr>
+          <tr><td>大場</td><td>×2</td><td>松に鶴, 桜に幕, 芒に月のいずれか</td></tr>
+          <tr><td>小場</td><td>×1</td><td>光札が場にない</td></tr>
+          <tr><td>くっつき</td><td>-</td><td>場札6枚が3組の同月ペア</td></tr>
+        </table>
+        <h4>出来役</h4>
+        <table>
+          <tr><td>五光</td><td>12貫</td><td>光札5枚全て</td></tr>
+          <tr><td>四光</td><td>8貫</td><td>光札4枚（柳を含まない）</td></tr>
+          <tr><td>雨四光</td><td>7貫</td><td>光札4枚（柳を含む）</td></tr>
+          <tr><td>三光</td><td>6貫</td><td>光札3枚（柳を含まない）</td></tr>
+          <tr><td>赤短</td><td>7貫</td><td>松・梅・桜の赤短冊3枚</td></tr>
+          <tr><td>青短</td><td>7貫</td><td>牡丹・菊・紅葉の青短冊3枚</td></tr>
+          <tr><td>猪鹿蝶</td><td>5貫</td><td>萩に猪・紅葉に鹿・牡丹に蝶</td></tr>
+          <tr><td>花見酒</td><td>5貫</td><td>桜に幕 + 菊に盃</td></tr>
+          <tr><td>月見酒</td><td>5貫</td><td>芒に月 + 菊に盃</td></tr>
+          <tr><td>七短</td><td>7貫</td><td>短冊7枚以上</td></tr>
+        </table>
+      </div>
+    </details>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
